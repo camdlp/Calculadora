@@ -69,6 +69,8 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         botonC = new javax.swing.JButton();
         botonCE = new javax.swing.JButton();
+        botonPunto = new javax.swing.JButton();
+        botonDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -177,9 +179,9 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             }
         });
 
-        botonIgual.setBackground(new java.awt.Color(255, 102, 0));
+        botonIgual.setBackground(new java.awt.Color(255, 255, 255));
         botonIgual.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
-        botonIgual.setForeground(new java.awt.Color(255, 255, 255));
+        botonIgual.setForeground(new java.awt.Color(255, 102, 0));
         botonIgual.setText("=");
         botonIgual.setToolTipText("");
         botonIgual.setMaximumSize(new java.awt.Dimension(59, 59));
@@ -258,7 +260,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("0");
 
@@ -276,6 +278,32 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         botonCE.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         botonCE.setForeground(new java.awt.Color(255, 102, 0));
         botonCE.setText("CE");
+        botonCE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonCEMousePressed(evt);
+            }
+        });
+
+        botonPunto.setBackground(new java.awt.Color(255, 102, 0));
+        botonPunto.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        botonPunto.setForeground(new java.awt.Color(255, 255, 255));
+        botonPunto.setText(".");
+        botonPunto.setToolTipText("");
+        botonPunto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonPuntoMousePressed(evt);
+            }
+        });
+
+        botonDelete.setBackground(new java.awt.Color(255, 255, 255));
+        botonDelete.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        botonDelete.setForeground(new java.awt.Color(255, 102, 0));
+        botonDelete.setText("⇐");
+        botonDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonDeleteMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -298,7 +326,8 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(boton8, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(boton9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(boton9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addComponent(boton5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,12 +335,13 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                                 .addComponent(boton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(boton2, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                                    .addComponent(botonPunto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonIgual, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(boton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(boton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(botonIgual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(boton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -322,10 +352,12 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(botonCE, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonCE, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -336,9 +368,10 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(botonCE, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(botonCE, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -357,9 +390,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                             .addComponent(boton3)
                             .addComponent(boton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(boton0)
-                            .addComponent(botonIgual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(boton0))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botonMas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -367,7 +398,10 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botonPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonDiv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonDiv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonIgual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonPunto))))
                 .addContainerGap())
         );
 
@@ -457,12 +491,33 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             operando1 /= operando2;
         }
         
-        jLabel1.setText(String.valueOf(operando1));
+        jLabel2.setText(String.valueOf(operando1));
+        jLabel1.setText("0");
     }//GEN-LAST:event_botonIgualMousePressed
 
     private void botonCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCMousePressed
         jLabel1.setText("0");
     }//GEN-LAST:event_botonCMousePressed
+
+    private void botonPuntoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonPuntoMousePressed
+        String opExistente = jLabel1.getText();
+        if(opExistente.contains(".")){
+        jLabel1.setText(opExistente);
+        }else{
+            jLabel1.setText(opExistente + ".");
+        }
+    }//GEN-LAST:event_botonPuntoMousePressed
+
+    private void botonCEMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCEMousePressed
+        jLabel1.setText("0");
+        jLabel2.setText("0");
+    }//GEN-LAST:event_botonCEMousePressed
+
+    private void botonDeleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDeleteMousePressed
+        String str = jLabel1.getText();
+        
+        jLabel1.setText(str.substring(0, str.length() - 1));
+    }//GEN-LAST:event_botonDeleteMousePressed
 
     /**
      * @param args the command line arguments
@@ -512,11 +567,13 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton boton9;
     private javax.swing.JButton botonC;
     private javax.swing.JButton botonCE;
+    private javax.swing.JButton botonDelete;
     private javax.swing.JButton botonDiv;
     private javax.swing.JButton botonIgual;
     private javax.swing.JButton botonMas;
     private javax.swing.JButton botonMenos;
     private javax.swing.JButton botonPor;
+    private javax.swing.JButton botonPunto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
