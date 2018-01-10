@@ -67,6 +67,8 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         botonDiv = new javax.swing.JButton();
         botonMas = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        botonC = new javax.swing.JButton();
+        botonCE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -260,6 +262,21 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("0");
 
+        botonC.setBackground(new java.awt.Color(255, 255, 255));
+        botonC.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        botonC.setForeground(new java.awt.Color(255, 102, 0));
+        botonC.setText("C");
+        botonC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                botonCMousePressed(evt);
+            }
+        });
+
+        botonCE.setBackground(new java.awt.Color(255, 255, 255));
+        botonCE.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        botonCE.setForeground(new java.awt.Color(255, 102, 0));
+        botonCE.setText("CE");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -304,6 +321,11 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                         .addGap(6, 6, 6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botonCE, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -311,8 +333,12 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonC, javax.swing.GroupLayout.PREFERRED_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(botonCE, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -434,6 +460,10 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         jLabel1.setText(String.valueOf(operando1));
     }//GEN-LAST:event_botonIgualMousePressed
 
+    private void botonCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCMousePressed
+        jLabel1.setText("0");
+    }//GEN-LAST:event_botonCMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -480,6 +510,8 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton boton7;
     private javax.swing.JButton boton8;
     private javax.swing.JButton boton9;
+    private javax.swing.JButton botonC;
+    private javax.swing.JButton botonCE;
     private javax.swing.JButton botonDiv;
     private javax.swing.JButton botonIgual;
     private javax.swing.JButton botonMas;
