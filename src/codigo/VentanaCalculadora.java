@@ -7,7 +7,7 @@ package codigo;
 
 /**
  *
- * @author carlosabia
+ * @author Carlos Abia 
  */
 public class VentanaCalculadora extends javax.swing.JFrame {
     
